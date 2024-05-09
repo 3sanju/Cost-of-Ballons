@@ -1,0 +1,27 @@
+test_cases = int(input())
+
+for _ in range(test_cases):
+    green_ballon_cost, purple_ballon_cost = map(int, input().split())
+    participants = int(input())
+    solved_problems = []
+    for _ in range(participants):
+        solved_problems.append(list(map(int, input().split())))
+    
+    green_problem1_cost = 0
+    purple_problem2_cost = 0
+    
+    for problem in solved_problems:
+        green_problem1_cost += problem[0] * green_ballon_cost
+        purple_problem2_cost += problem[1] * purple_ballon_cost
+        
+    green_problem2_cost = 0
+    purple_problem1_cost = 0
+    
+    for problem in solved_problems:
+        purple_problem1_cost += problem[0] * purple_ballon_cost
+        green_problem2_cost += problem[1] * green_ballon_cost
+        
+    total_cost1 = green_problem1_cost + purple_problem2_cost
+    total_cost2 = purple_problem1_cost + green_problem2_cost
+    
+    print(min(total_cost1, total_cost2))
